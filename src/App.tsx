@@ -10,9 +10,9 @@ import { Filter } from './components/Filter/Filter';
 
 export const App: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
-  const [filteredTodos, setFilteredTodos] = useState<Todo[]>();
+  const [filteredTodos, setFilteredTodos] = useState<Todo[]>([]);
   const [addTodo, setAddTodo] = useState('');
-  const [tempTodo, setTempTodo] = useState<Todo>({} as Todo);
+  const [tempTodo, setTempTodo] = useState<Todo | null>(null);
   const [loadError, setLoadError] = useState('');
   const [titleError, setTitleError] = useState('');
   const [actionError, setActionError] = useState('');

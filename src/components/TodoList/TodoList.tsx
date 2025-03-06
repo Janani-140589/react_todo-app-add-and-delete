@@ -5,7 +5,7 @@ type Prop = {
   filteredTodos: Todo[] | undefined;
   setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
   setActionError: React.Dispatch<React.SetStateAction<string>>;
-  tempTodo: Todo;
+  tempTodo: Todo|null;
   loadingId: number;
   setLoadingId: React.Dispatch<React.SetStateAction<number>>;
 };
@@ -106,7 +106,7 @@ export const TodoList: React.FC<Prop> = ({
           </div>
         </div>
       ))}
-      {tempTodo.id === 0 && (
+      {tempTodo && (
         <div
           data-cy="Todo"
           key={tempTodo.id}

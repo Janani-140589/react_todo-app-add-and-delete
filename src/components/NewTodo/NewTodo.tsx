@@ -11,7 +11,7 @@ type Prop = {
   setAddTodo: React.Dispatch<React.SetStateAction<string>>;
   setActionError: React.Dispatch<React.SetStateAction<string>>;
   setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
-  setTempTodo: React.Dispatch<React.SetStateAction<Todo>>;
+  setTempTodo: React.Dispatch<React.SetStateAction<Todo | null>>;
 };
 
 export const NewTodo: React.FC<Prop> = ({
@@ -37,7 +37,7 @@ export const NewTodo: React.FC<Prop> = ({
     event.preventDefault();
 
     if (addTodo.trim().length === 0) {
-      setTitleError('Unable to add Todo');
+      setTitleError('Title should not be empty');
 
       setTimeout(() => {
         setTitleError('');
@@ -48,7 +48,7 @@ export const NewTodo: React.FC<Prop> = ({
 
     const temp: Todo = {
       userId: USER_ID,
-      id: 0,
+      id: (Date.now() % 10000) + Math.floor(Math.random() * 10),
       title: addTodo.trim(),
       completed: false,
     };
@@ -65,7 +65,7 @@ export const NewTodo: React.FC<Prop> = ({
       })
       .finally(() => {
         setAddStatus(false);
-        setTempTodo({} as Todo);
+        setTempTodo(null);
       });
 
     setTimeout(() => {
