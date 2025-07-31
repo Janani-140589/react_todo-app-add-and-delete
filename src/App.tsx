@@ -13,7 +13,7 @@ export const App: React.FC = () => {
   return (
     <section className="section container">
       <p className="title is-4">
-        Copy all you need from the prev task:
+        Copy all you need from the prev task(git practice):
         <br />
         <a href="https://github.com/mate-academy/react_todo-app-loading-todos#react-todo-app-load-todos">
           React Todo App - Load Todos
